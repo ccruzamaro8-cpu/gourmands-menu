@@ -1,3 +1,10 @@
+// --- INICIALIZACIÓN DE SUPABASE (Línea 1) ---
+const SUPABASE_URL = 'https://ccruzamaro8-cpu.github.io/gourmands-menu/';
+const SUPABASE_ANON_KEY = 'sb_publishable_1Kbo2iAExcvDg7EuqtogMA_K7olBEdD';
+
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// --- AQUÍ CONTINÚA EL RESTO DE TU CÓDIGO EXISTENTE ---
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- STATE ---
