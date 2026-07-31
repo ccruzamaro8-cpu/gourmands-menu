@@ -1,15 +1,16 @@
 // --- INICIALIZACIÓN DE SUPABASE (Línea 1) ---
-const SUPABASE_URL = 'https://ccruzamaro8-cpu.github.io/gourmands-menu/';
+// ⚠️ REEMPLAZA 'https://TU_PROJECT_ID.supabase.co' POR TU PROJECT URL DE SUPABASE
+const SUPABASE_URL = 'https://gstvpfhsdrtcvvnyrfyr.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_1Kbo2iAExcvDg7EuqtogMA_K7olBEdD';
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// --- AQUÍ CONTINÚA EL RESTO DE TU CÓDIGO EXISTENTE ---
+// --- CÓDIGO PRINCIPAL DE TU APLICACIÓN ---
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- STATE ---
     let cart = [];
-    const WHATSAPP_NUMBER = '526143938498'; // Mexico prefix + 614 393 8498
+    const WHATSAPP_NUMBER = '526143347210'; // Mexico prefix + 614 393 8498
 
     // --- DOM ELEMENTS ---
     // Nav & Sections
@@ -90,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 2. INTERSECTION OBSERVER FOR AUTO-HIGHLIGHT TABS ---
-    // Listens to which section is occupying the centered sweet-spot of the mobile viewport
     const observerOptions = {
         root: null, // Default viewport
         rootMargin: '-25% 0px -55% 0px', // Centered band to trigger section entrance
@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
-        // Skip updates if user triggered an auto-scroll click
         if (isAutoScrolling) return;
 
         entries.forEach(entry => {
@@ -115,13 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe each category section
     sections.forEach(sec => sectionObserver.observe(sec));
 
-    // --- 3. DYNAMIC STORE STATUS INDICATOR (LATE NIGHT AWARE) ---
+    // --- 3. DYNAMIC STORE STATUS INDICATOR ---
     function updateStoreStatus() {
         const now = new Date();
-        const day = now.getDay(); // 0: Sun, 1: Mon, ..., 6: Sat
+        const day = now.getDay();
         const hour = now.getHours();
         const minute = now.getMinutes();
         const currentTime = hour + (minute / 60);
@@ -136,32 +134,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Sunday
         if (day === 0) {
             isOpen = isBetween(currentTime, 18.5, 3) || isBetween(currentTime, 0, 3.5);
-        }
-        // Monday
-        else if (day === 1) {
+        } else if (day === 1) {
             isOpen = isBetween(currentTime, 18.5, 2) || isBetween(currentTime, 0, 3);
-        }
-        // Tuesday
-        else if (day === 2) {
+        } else if (day === 2) {
             isOpen = isBetween(currentTime, 19, 3) || isBetween(currentTime, 0, 2);
-        }
-        // Wednesday
-        else if (day === 3) {
-            isOpen = isBetween(currentTime, 0, 3); // Morning spillover only
-        }
-        // Thursday
-        else if (day === 4) {
+        } else if (day === 3) {
+            isOpen = isBetween(currentTime, 0, 3);
+        } else if (day === 4) {
             isOpen = isBetween(currentTime, 19, 3);
-        }
-        // Friday
-        else if (day === 5) {
+        } else if (day === 5) {
             isOpen = isBetween(currentTime, 19, 3.5) || isBetween(currentTime, 0, 3);
-        }
-        // Saturday
-        else if (day === 6) {
+        } else if (day === 6) {
             isOpen = isBetween(currentTime, 19, 3.5) || isBetween(currentTime, 0, 3.5);
         }
 
@@ -175,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateStoreStatus();
-    setInterval(updateStoreStatus, 60000); // Check once a minute
+    setInterval(updateStoreStatus, 60000);
 
     // --- 4. CUSTOMIZER (ARMA TU DOGO) LOGIC ---
     function updateCustomDogoPrice() {
@@ -188,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let salchichaName = '';
         let selectedExtras = [];
 
-        // Pan select
         customPanOptions.forEach(opt => {
             if (opt.checked) {
                 panName = opt.value;
@@ -199,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Salchicha select
         customSalchichaOptions.forEach(opt => {
             if (opt.checked) {
                 salchichaName = opt.value;
@@ -210,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Extras select
         customExtrasOptions.forEach(opt => {
             if (opt.checked) {
                 const price = parseFloat(opt.dataset.price);
@@ -236,19 +218,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Bind change events
     customPanOptions.forEach(opt => opt.addEventListener('change', updateCustomDogoPrice));
     customSalchichaOptions.forEach(opt => opt.addEventListener('change', updateCustomDogoPrice));
     customExtrasOptions.forEach(opt => opt.addEventListener('change', updateCustomDogoPrice));
     
-    // Init price check
     updateCustomDogoPrice();
 
     // --- 5. CART DRAWER OPERATIONS ---
     function openCart() {
         cartDrawer.classList.add('open');
         cartDrawer.setAttribute('aria-hidden', 'false');
-        // Prevent body scrolling when cart is open for app-native overlay experience
         document.body.style.overflow = 'hidden';
     }
 
@@ -261,7 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cartTrigger.addEventListener('click', openCart);
     closeCartBtn.addEventListener('click', closeCart);
 
-    // Add standard menu item to cart
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -270,18 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             addItemToCart(name, price);
             
-            // Pulse animation on trigger
             cartTrigger.style.transform = 'scale(1.15)';
             setTimeout(() => {
                 cartTrigger.style.transform = '';
             }, 200);
 
-            // Auto show cart drawer to verify addition
             openCart();
         });
     });
 
-    // Add customized dogo to cart
     addCustomDogoBtn.addEventListener('click', (e) => {
         e.preventDefault();
         const details = updateCustomDogoPrice();
@@ -294,13 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addItemToCart(customName, details.price, customInfo);
 
-        // Reset inputs
         customExtrasOptions.forEach(opt => opt.checked = false);
         customPanOptions[0].checked = true;
         customSalchichaOptions[0].checked = true;
         updateCustomDogoPrice();
 
-        // Cart trigger feedback
         cartTrigger.style.transform = 'scale(1.15)';
         setTimeout(() => {
             cartTrigger.style.transform = '';
@@ -381,7 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotalValue.textContent = `$${total.toFixed(2)}`;
         cartBadgeCount.textContent = totalCount;
 
-        // Re-bind quantity buttons
         document.querySelectorAll('.minus-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -407,8 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCart();
     });
 
-    // --- 6. CHECKOUT VIA WHATSAPP ---
-    sendWhatsappBtn.addEventListener('click', (e) => {
+    // --- 6. CHECKOUT VIA WHATSAPP & GUARDADO EN SUPABASE ---
+    sendWhatsappBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (cart.length === 0) return;
 
@@ -432,6 +404,28 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `----------------------------\n\n`;
         message += `📍 *Por favor, confírmenme si:* \n- Tienen servicio a domicilio disponible.\n- El tiempo aproximado de entrega.\n\n¡Gracias!`;
 
+        // 1. Guardar pedido en Supabase
+        try {
+            const { data, error } = await supabaseClient
+                .from('pedidos')
+                .insert([
+                    {
+                        items: cart,
+                        total: total,
+                        mensaje: message
+                    }
+                ]);
+
+            if (error) {
+                console.error('Error guardando pedido en Supabase:', error.message);
+            } else {
+                console.log('Pedido guardado con éxito en la base de datos');
+            }
+        } catch (err) {
+            console.error('Error en la petición a Supabase:', err);
+        }
+
+        // 2. Abrir WhatsApp
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
 
