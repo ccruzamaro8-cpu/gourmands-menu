@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Gourmands Hot-Dogs - Menú Digital</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="assets/logo.jpg" alt="Gourmands Logo" class="logo" loading="eager">
+            </div>
+            <h1 class="brand-title">GOURMANDS</h1>
+            <p class="brand-tagline">Hot-Dogs Gourmet • Ingredientes de Calidad • Sodas de Importación</p>
+            
+            <div class="status-badge-container">
+                <span id="store-status" class="status-badge loading">Cargando estado...</span>
+            </div>
+
+            <div class="hero-info">
+                <a href="https://www.google.com/maps/place/Gourmands+hot+-dogs/@28.6995436,-106.1443468,17z" target="_blank" rel="noopener" class="info-link">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Av. Campo del Nte, Campo Bello I, Chihuahua
+                </a>
+                <a href="tel:6143938498" class="info-link">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    614 393 8498
+                </a>
+                <span class="info-text">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    Efectivo y Tarjeta
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" id="sticky-nav">
+        <div class="nav-container-wrapper">
+            <div class="nav-container">
+                <button class="nav-btn active" data-target="especiales">🌭 Especiales</button>
+                <button class="nav-btn" data-target="botanas">🍟 Botanas</button>
+                <button class="nav-btn" data-target="bebidas">🥤 Bebidas</button>
+                <button class="nav-btn" data-target="personalizador">🛠️ Arma tu Dogo</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="menu-container">
+        
+        <!-- SECTION: Especiales -->
+        <section id="especiales" class="menu-section">
+            <h2 class="section-title">Nuestros Dogos Especiales</h2>
+            <p class="section-subtitle">Recetas exclusivas con ingredientes seleccionados de alta calidad</p>
+            
+            <div class="items-grid">
+                
+                <!-- Item 1 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/dogo_clasico.jpg" alt="El Clásico Gourmand" class="item-img" loading="lazy">
+                        <span class="card-badge gold">Más Vendido</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>El Clásico Gourmand</h3>
+                            <span class="price">$85.00</span>
+                        </div>
+                        <p class="item-description">Salchicha clásica sobre pan suave, acompañado de jitomate fresco, cebolla picada, aderezos especiales de la casa y una crujiente lluvia de tocino.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="El Clásico Gourmand" data-price="85" aria-label="Agregar El Clásico Gourmand al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/dogo_aleman.jpg" alt="Dogo Alemán / Estilo Berlín" class="item-img" loading="lazy">
+                        <span class="card-badge">Artesanal</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Dogo Alemán / Berlín</h3>
+                            <span class="price">$95.00</span>
+                        </div>
+                        <p class="item-description">Salchicha artesanal polaca ahumada, una generosa porción de chucrut (sauerkraut), deliciosa mostaza gourmet y queso fundido derretido al momento.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Dogo Alemán / Berlín" data-price="95" aria-label="Agregar Dogo Alemán o Berlín al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/dogo_mexicano.jpg" alt="Dogo Mexicano Picante" class="item-img" loading="lazy">
+                        <span class="card-badge spicy">🔥 Picante</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Mexicano Picante</h3>
+                            <span class="price">$95.00</span>
+                        </div>
+                        <p class="item-description">Salchicha con queso en pan artesanal, guacamole fresco de la casa, elotitos dulces, jalapeños toreados y aderezo especial de chipotle.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Mexicano Picante" data-price="95" aria-label="Agregar Mexicano Picante al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/dogo_clasico.jpg" alt="Especial de Quesos & Toppings" class="item-img" style="filter: hue-rotate(15deg) brightness(0.95);" loading="lazy">
+                        <span class="card-badge">Para Amantes del Queso</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Quesos & Toppings</h3>
+                            <span class="price">$105.00</span>
+                        </div>
+                        <p class="item-description">Espectacular mezcla de quesos fundidos (mozzarella y cheddar), champiñones frescos salteados al ajillo y cebolla caramelizada dulce.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Quesos & Toppings" data-price="105" aria-label="Agregar Quesos y Toppings al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: Botanas -->
+        <section id="botanas" class="menu-section">
+            <h2 class="section-title">Botanas & Entradas</h2>
+            <p class="section-subtitle">El complemento perfecto para abrir boca</p>
+            
+            <div class="items-grid">
+                
+                <!-- Item 1 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/loaded_fries.jpg" alt="Loaded Fries" class="item-img" loading="lazy">
+                        <span class="card-badge gold">Favorito</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Loaded Fries</h3>
+                            <span class="price">$85.00</span>
+                        </div>
+                        <p class="item-description">Papas a la francesa doradas, bañadas en nuestra salsa de queso cheddar fundido calientita, tocino crujiente picado y aderezo especial de la casa.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Loaded Fries" data-price="85" aria-label="Agregar Loaded Fries al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/loaded_fries.jpg" alt="Papas a la Francesa" class="item-img" style="filter: saturate(0.8) brightness(1.1);" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Papas a la Francesa</h3>
+                            <span class="price">$55.00</span>
+                        </div>
+                        <p class="item-description">Crocantes y sazonadas al momento con nuestra mezcla especial de sal de ajo, pimentón y finas hierbas. Servidas con salsa cátsup.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Papas a la Francesa" data-price="55" aria-label="Agregar Papas a la Francesa al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/dogo_clasico.jpg" alt="Botanas para la Mesa" class="item-img" style="filter: blur(1px) brightness(0.6);" loading="lazy">
+                        <span class="card-badge">Para Compartir</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title-row">
+                            <h3>Botanas para la Mesa</h3>
+                            <span class="price">$90.00</span>
+                        </div>
+                        <p class="item-description">Una deliciosa selección mixta de aros de cebolla crujientes, papas sazonadas y aderezos gourmet listos para compartir.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-name="Botanas para la Mesa" data-price="90" aria-label="Agregar Botanas para la Mesa al pedido">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: Bebidas -->
+        <section id="bebidas" class="menu-section">
+            <h2 class="section-title">Bebidas Exclusivas</h2>
+            <p class="section-subtitle">Sodas importadas y refrescos nacionales bien fríos</p>
+            
+            <div class="drinks-list">
+                
+                <div class="drink-item">
+                    <div class="drink-details">
+                        <h4>🥤 Sodas de Importación / Americanas</h4>
+                        <p>Variedad exclusiva de sabores (Dr Pepper, Cherry Coke, Fanta Berry y más marcas americanas).</p>
+                    </div>
+                    <div class="drink-action">
+                        <span class="price">$40.00</span>
+                        <button class="btn btn-sm btn-outline add-to-cart-btn" data-name="Soda de Importación" data-price="40" aria-label="Agregar Soda de Importación al pedido">+</button>
+                    </div>
+                </div>
+
+                <div class="drink-item">
+                    <div class="drink-details">
+                        <h4>🥤 Refrescos Nacionales</h4>
+                        <p>Coca-Cola Original, Sin Azúcar, Sprite, Fanta Naranja, Mundet de Manzana.</p>
+                    </div>
+                    <div class="drink-action">
+                        <span class="price">$30.00</span>
+                        <button class="btn btn-sm btn-outline add-to-cart-btn" data-name="Refresco Nacional" data-price="30" aria-label="Agregar Refresco Nacional al pedido">+</button>
+                    </div>
+                </div>
+
+                <div class="drink-item">
+                    <div class="drink-details">
+                        <h4>💧 Agua Embotellada</h4>
+                        <p>Agua purificada de manantial (500ml), bien fría.</p>
+                    </div>
+                    <div class="drink-action">
+                        <span class="price">$20.00</span>
+                        <button class="btn btn-sm btn-outline add-to-cart-btn" data-name="Agua Embotellada" data-price="20" aria-label="Agregar Agua Embotellada al pedido">+</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: Personalizador (Arma tu Dogo) -->
+        <section id="personalizador" class="menu-section">
+            <h2 class="section-title">🛠_ Arma tu Dogo Custom</h2>
+            <p class="section-subtitle">Tú eres el chef. Elige la base y los ingredientes a tu gusto.</p>
+            
+            <div class="customizer-container">
+                <div class="customizer-steps">
+                    
+                    <!-- Step 1 -->
+                    <div class="custom-step">
+                        <h3>Paso 1: Elige tu Pan</h3>
+                        <div class="options-grid">
+                            <label class="custom-option">
+                                <input type="radio" name="pan-select" value="Tradicional Suave" checked>
+                                <span class="option-card">
+                                    <span class="option-title">Tradicional Suave</span>
+                                    <span class="option-price">+$0.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option">
+                                <input type="radio" name="pan-select" value="Artesanal Gourmet">
+                                <span class="option-card">
+                                    <span class="option-title">Artesanal Gourmet</span>
+                                    <span class="option-price">+$15.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option">
+                                <input type="radio" name="pan-select" value="Pan con Ajo y Hierbas">
+                                <span class="option-card">
+                                    <span class="option-title">Ajo y Hierbas</span>
+                                    <span class="option-price">+$15.00</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="custom-step">
+                        <h3>Paso 2: Elige tu Salchicha</h3>
+                        <div class="options-grid">
+                            <label class="custom-option">
+                                <input type="radio" name="salchicha-select" value="Clásica" checked>
+                                <span class="option-card">
+                                    <span class="option-title">Clásica Regular</span>
+                                    <span class="option-price">+$0.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option">
+                                <input type="radio" name="salchicha-select" value="Salchicha Polaca / Ahumada">
+                                <span class="option-card">
+                                    <span class="option-title">Polaca / Ahumada</span>
+                                    <span class="option-price">+$25.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option">
+                                <input type="radio" name="salchicha-select" value="Salchicha con Queso">
+                                <span class="option-card">
+                                    <span class="option-title">Salchicha con Queso</span>
+                                    <span class="option-price">+$25.00</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="custom-step">
+                        <h3>Paso 3: Ingredientes Extra (Opcional)</h3>
+                        <div class="options-grid">
+                            <label class="custom-option-check">
+                                <input type="checkbox" name="extra-select" value="Lluvia de Tocino" data-price="15">
+                                <span class="check-card">
+                                    <span class="option-title">Tocino Crujiente</span>
+                                    <span class="option-price">+$15.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option-check">
+                                <input type="checkbox" name="extra-select" value="Queso Fundido" data-price="20">
+                                <span class="check-card">
+                                    <span class="option-title">Queso Fundido</span>
+                                    <span class="option-price">+$20.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option-check">
+                                <input type="checkbox" name="extra-select" value="Guacamole de la Casa" data-price="18">
+                                <span class="check-card">
+                                    <span class="option-title">Guacamole de la Casa</span>
+                                    <span class="option-price">+$18.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option-check">
+                                <input type="checkbox" name="extra-select" value="Chucrut Alemán" data-price="12">
+                                <span class="check-card">
+                                    <span class="option-title">Chucrut Alemán</span>
+                                    <span class="option-price">+$12.00</span>
+                                </span>
+                            </label>
+                            <label class="custom-option-check">
+                                <input type="checkbox" name="extra-select" value="Champiñones al Ajillo" data-price="15">
+                                <span class="check-card">
+                                    <span class="option-title">Champiñones al Ajillo</span>
+                                    <span class="option-price">+$15.00</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Customizer Summary Card -->
+                <div class="customizer-summary-card">
+                    <h4>Resumen de tu Dogo</h4>
+                    <div class="summary-details">
+                        <div class="summary-line"><span>Precio Base:</span> <span>$60.00</span></div>
+                        <div id="summary-pan" class="summary-line"><span>Pan:</span> <span>Tradicional Suave (+$0.00)</span></div>
+                        <div id="summary-salchicha" class="summary-line"><span>Salchicha:</span> <span>Clásica (+$0.00)</span></div>
+                        <div id="summary-extras" class="summary-line"><span>Extras:</span> <span>Ninguno</span></div>
+                        <hr class="summary-divider">
+                        <div class="summary-total-line">
+                            <span>Total del Dogo:</span>
+                            <span id="custom-total-price">$60.00</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary w-full" id="add-custom-dogo-btn" aria-label="Agregar dogo personalizado al pedido">
+                        Agregar Dogo Creado
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shopping Cart Sidebar Widget -->
+    <div id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <button id="close-cart-btn" class="close-cart-btn" aria-label="Cerrar carrito">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Dynamically populated -->
+            <p class="empty-cart-msg">Tu carrito está vacío. ¡Elige tus platillos favoritos!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cart-total-value">$0.00</span>
+            </div>
+            <button id="send-whatsapp-btn" class="btn btn-primary btn-checkout w-full" disabled aria-label="Enviar pedido final por WhatsApp">
+                Enviar Pedido por WhatsApp
+            </button>
+            <button id="clear-cart-btn" class="btn btn-outline btn-clear w-full" aria-label="Vaciar todo el pedido actual">
+                Vaciar Pedido
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button id="floating-cart-trigger" class="floating-cart-trigger" aria-label="Abrir carrito de compras">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span id="cart-badge" class="cart-badge">0</span>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/logo.jpg" alt="Gourmands Logo Small" class="logo-small" loading="lazy">
+            </div>
+            <p class="footer-tag">🌭 Gourmands Hot-Dogs — La experiencia gourmet definitiva en hot-dogs.</p>
+            
+            <div class="hours-container">
+                <h4>Horarios de Servicio:</h4>
+                <ul class="hours-list">
+                    <li><span>Lunes:</span> <span>6:30 PM – 2:00 AM</span></li>
+                    <li><span>Martes y Jueves:</span> <span>7:00 PM – 3:00 AM</span></li>
+                    <li><span>Viernes y Sábado:</span> <span>7:00 PM – 3:30 AM</span></li>
+                    <li><span>Domingo:</span> <span>6:30 PM – 3:00 AM</span></li>
+                    <li class="closed-day"><span>Miércoles:</span> <span>Cerrado</span></li>
+                </ul>
+            </div>
+
+            <p class="footer-links">
+                Servicio en local, para llevar y servicio a domicilio en Chihuahua.
+            </p>
+            <p class="copyright">&copy; 2026 Gourmands Hot-Dogs. Todos los derechos reservados. Diseñado profesionalmente.</p>
+        </div>
+    </footer>
+
+    <!-- Main Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>
